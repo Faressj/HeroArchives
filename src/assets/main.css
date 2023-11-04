@@ -1,0 +1,26 @@
+html {
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden
+}
+
+/* Cacher les barres de défilement si elles ne sont pas nécessaires */
+html {
+  scrollbar-width: none;
+  /* pour Firefox */
+  -ms-overflow-style: none;
+  /* pour Internet Explorer, Edge */
+}
+
+/* Pour les navigateurs Webkit comme Safari et Chrome */
+body::-webkit-scrollbar {
+  display: none;
+}
