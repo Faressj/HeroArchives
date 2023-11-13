@@ -1,17 +1,13 @@
 <script setup>
-import Home from './components/Home.vue'
+// Plus besoin d'importer Home ici, car il sera géré par Vue Router
 </script>
 
 <template>
   <header>
-    <!-- <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div> -->
+    <!-- Contenu de l'en-tête ici -->
   </header>
 
   <main>
-    <Home />
+    <router-view></router-view>
   </main>
 </template>

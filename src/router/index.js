@@ -1,13 +1,9 @@
-import Vue from 'vue';
-import Router from 'vue-router';
-import Home from '../views/Home.vue';
-import Hero from '../views/Hero.vue';
+import { createRouter, createWebHistory } from 'vue-router';
+import Home from '../components/Home.vue';
+import Hero from '../components/Hero.vue';
 
-Vue.use(Router);
-
-export default new Router({
-  mode: 'history',
-  base: process.env.BASE_URL,
+const router = createRouter({
+  history: createWebHistory('/'),
   routes: [
     {
       path: '/',
@@ -21,3 +17,5 @@ export default new Router({
     }
   ]
 });
+
+export default router;
