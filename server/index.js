@@ -10,7 +10,7 @@ const publicKey = process.env.PUBLIC_KEY;
 const privateKey = process.env.PRIVATE_KEY;
 
 app.use(cors({
-    origin: 'http://localhost:5173'
+    origin: 'https://heroarchives.com'
 }));
 
 app.get('/', (req, res) => {
@@ -95,5 +95,5 @@ app.get('/event/:eventId', async (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`Server listening at http://localhost:${port}`);
+    console.log(`Server listening at https://heroarchives.com`);
 });
