@@ -157,7 +157,6 @@
 <script>
 import axios from 'axios';
 import { Splide, SplideSlide } from '@splidejs/vue-splide';
-console.log("Developed by Fares Kouki")
 export default {
     components: {
         Splide,
