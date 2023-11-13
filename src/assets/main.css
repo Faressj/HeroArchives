@@ -14,15 +14,11 @@ body {
   height: 100%;
 }
 
-/* Cacher les barres de défilement si elles ne sont pas nécessaires */
 html {
   scrollbar-width: none;
-  /* pour Firefox */
   -ms-overflow-style: none;
-  /* pour Internet Explorer, Edge */
 }
 
-/* Pour les navigateurs Webkit comme Safari et Chrome */
 body::-webkit-scrollbar {
   display: none;
 }

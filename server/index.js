@@ -22,7 +22,6 @@ app.get('/search-hero', async (req, res) => {
     const hash = crypto.createHash('md5').update(ts + privateKey + publicKey).digest('hex');
     const query = req.query.name;
     try {
-        // Utilisation de nameStartsWith pour une recherche plus souple
         const response = await axios.get(`https://gateway.marvel.com/v1/public/characters?nameStartsWith=${query}&ts=${ts}&apikey=${publicKey}&hash=${hash}&limit=10`); // Ajout d'une limite
         res.json(response.data);
     } catch (error) {

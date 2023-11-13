@@ -157,7 +157,7 @@
 <script>
 import axios from 'axios';
 import { Splide, SplideSlide } from '@splidejs/vue-splide';
-
+console.log("Developed by Fares Kouki")
 export default {
     components: {
         Splide,
@@ -291,8 +291,6 @@ export default {
             }
         },
         async fetchHeroData(id) {
-            console.log("appel api");
-            console.log('Fetching data for hero:', id);
             try {
                 const response = await axios.get(`https://heroarchives.com/hero/${id}`);
                 this.hero = response.data.data.results[0];
@@ -332,7 +330,8 @@ export default {
         display: grid;
         width: 100%;
         background-attachment: fixed;
-        h1{
+
+        h1 {
             border-radius: 50px;
             text-align: center;
             background-color: rgba(0, 0, 0, 0.2);
@@ -475,18 +474,20 @@ export default {
             }
         }
     }
-    .external-links{
+
+    .external-links {
         color: white;
         font-size: 32px;
-        ul{
+
+        ul {
             list-style: none;
             display: flex;
             gap: 20px;
-            a{
+
+            a {
                 text-decoration: none;
                 color: white;
             }
         }
     }
-}
-</style>
+}</style>

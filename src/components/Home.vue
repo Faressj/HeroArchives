@@ -67,7 +67,7 @@ import imagemarvel from '@/assets/images/marvel.jpg';
 import imagedc from '@/assets/images/dc_comics.jpg';
 import _ from 'lodash';
 import axios from 'axios';
-
+console.log("Developed by Fares Kouki")
 
 
 export default {
@@ -87,8 +87,6 @@ export default {
   },
   methods: {
     handleImageClick(image) {
-      console.log("bite");
-      // Mettre à jour l'état pour suivre l'image actuellement sélectionnée
       this.currentImage = image;
 
       this.$nextTick(() => {
@@ -97,7 +95,7 @@ export default {
         const leftContentEl = document.querySelector('.leftImageContent');
         const rightContentEl = document.querySelector('.rightImageContent');
 
-        [leftImageEl, rightImageEl, leftContentEl, rightContentEl].forEach(el => { // Réinitialiser les styles pour les deux images et conteneurs de contenu
+        [leftImageEl, rightImageEl, leftContentEl, rightContentEl].forEach(el => {
           if (el) {
             el.style.display = 'none';
           }
@@ -108,16 +106,16 @@ export default {
             leftImageEl.style.display = 'block';
             leftContentEl.style.display = 'grid';
             leftImageEl.classList.add("img-fullscreen");
-            leftContentEl.classList.add("fade-in"); // Ajouter la classe fade-in
-            setTimeout(() => leftContentEl.classList.add("show"), 10); // Ajouter la classe show après un court délai
+            leftContentEl.classList.add("fade-in");
+            setTimeout(() => leftContentEl.classList.add("show"), 10);
           }
         } else if (image === 'right') {
           if (rightImageEl && rightContentEl) {
             rightImageEl.style.display = 'block';
             rightContentEl.style.display = 'grid';
             rightImageEl.classList.add("img-fullscreen");
-            rightContentEl.classList.add("fade-in"); // Ajouter la classe fade-in
-            setTimeout(() => rightContentEl.classList.add("show"), 10); // Ajouter la classe show après un court délai
+            rightContentEl.classList.add("fade-in");
+            setTimeout(() => rightContentEl.classList.add("show"), 10);
           }
         }
       });
@@ -154,14 +152,14 @@ export default {
           const response = await axios.get('https://heroarchives.com/search-hero', {
             params: { name: this.searchQuery }
           });
-          this.heroSuggestions = response.data.data.results; // Assurez-vous que ce chemin correspond à la structure de données de l'API Marvel
+          this.heroSuggestions = response.data.data.results;
         } catch (error) {
           console.error(error);
         }
       } else {
 
       }
-    }, 500), // Déclencher la fonction 500ms après que l'utilisateur a cessé de taper
+    }, 500),
 
     goToHero(id) {
       this.$router.push({ name: 'hero', params: { id: id } });
@@ -220,12 +218,11 @@ export default {
   .leftImageContent,
   .rightImageContent {
     display: none;
-    opacity: 0; // Opacité initiale à 0
+    opacity: 0;
     justify-content: center;
     align-content: center;
     position: fixed;
     top: 0;
-    // left: 0;
     width: 100%;
     height: 100%;
     z-index: 1;
@@ -235,15 +232,15 @@ export default {
 
     .back-button {
       position: absolute;
-      top: 10px; // Positionner en haut
-      right: 10px; // Positionner à droite
+      top: 10px;
+      right: 10px;
       padding: 10px 15px;
       background-color: #f2f2f2;
       border: none;
       border-radius: 5px;
       cursor: pointer;
       font-size: 1em;
-      z-index: 2; // S'assurer qu'il est au-dessus des autres éléments
+      z-index: 2;
 
       &:hover {
         background-color: #e0e0e0;
@@ -322,6 +319,7 @@ export default {
             display: flex;
             margin: 20px;
             cursor: pointer;
+
             .hero-thumbnail {
               width: 75px;
               height: 75px;
@@ -361,10 +359,11 @@ body {
 }
 
 .fade-in {
-  opacity: 0; // Commencez avec une opacité de 0
-  transition: opacity 0.5s ease-in-out; // Transition d'opacité avec une durée de 0.5 secondes
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
 
   &.show {
-    opacity: 1; // Opacité totale lorsque la classe 'show' est ajoutée
+    opacity: 1;
   }
-}</style>
+}
+</style>
