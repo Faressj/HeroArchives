@@ -310,7 +310,7 @@ export default {
         background-color: rgb(255, 255, 255, 0.2);
         height: fit-content;
         font-size: 32px;
-
+        width: 100%;
         ul {
           list-style: none;
 
