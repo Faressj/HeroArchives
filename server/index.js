@@ -12,19 +12,30 @@ const privateKey = process.env.PRIVATE_KEY;
 // app.use(cors({
 //     origin: 'https://heroarchives.com'
 // }));
-const allowedOrigins = ['https://heroarchives.com', 'https://www.heroarchives.com'];
-app.use(cors({
-    origin: function(origin, callback){
-        if(!origin || allowedOrigins.indexOf(origin) !== -1){
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed by CORS'));
-        }
-    }
-}));
+// const allowedOrigins = ['https://heroarchives.com', 'https://www.heroarchives.com'];
+// app.use(cors({
+//     origin: function(origin, callback){
+//         if(!origin || allowedOrigins.indexOf(origin) !== -1){
+//             callback(null, true);
+//         } else {
+//             callback(new Error('Not allowed by CORS'));
+//         }
+//     }
+// }));
 
+if (process.env.NODE_ENV === "production") {
+    // Modifiez ce chemin selon l'emplacement de votre frontend buildé
+    app.use(express.static('/home/wami5019/HeroArchives/dist'));
+}
+
+console.log(__dirname);
 app.get('/', (req, res) => {
-    res.send('Server is running');
+    if (process.env.NODE_ENV === "production") {
+        res.sendFile(path.join('/home/wami5019/HeroArchives/dist/index.html'));
+    } else {
+        res.send('Server is running');
+    }
+
 });
 
 app.get('/search-hero', async (req, res) => {
@@ -102,7 +113,11 @@ app.get('/event/:eventId', async (req, res) => {
         res.status(500).send('Error fetching data from Marvel API');
     }
 });
-
+if (process.env.NODE_ENV === "production") {
+    app.get('*', (req, res) => {
+        res.sendFile('/home/wami5019/HeroArchives/dist/index.html');
+    });
+}
 app.listen(port, () => {
-    console.log(`Server listening at https://heroarchives.com`);
+    console.log(`Server is listening on http://localhost:${port}`);
 });
