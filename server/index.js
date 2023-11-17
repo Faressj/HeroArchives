@@ -10,7 +10,8 @@ const publicKey = process.env.PUBLIC_KEY;
 const privateKey = process.env.PRIVATE_KEY;
 
 app.use(cors({
-    origin: 'https://heroarchives.com'
+    origin: ['https://heroarchives.com', 'https://www.heroarchives.com']
+    // origin: 'https://heroarchives.com'
 }));
 
 app.get('/', (req, res) => {
