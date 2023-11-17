@@ -22,7 +22,7 @@ app.get('/search-hero', async (req, res) => {
     const hash = crypto.createHash('md5').update(ts + privateKey + publicKey).digest('hex');
     const query = req.query.name;
     try {
-        const response = await axios.get(`https://gateway.marvel.com/v1/public/characters?nameStartsWith=${query}&ts=${ts}&apikey=${publicKey}&hash=${hash}&limit=10`); // Ajout d'une limite
+        const response = await axios.get(`http://gateway.marvel.com/v1/public/characters?nameStartsWith=${query}&ts=${ts}&apikey=${publicKey}&hash=${hash}&limit=10`); // Ajout d'une limite
         res.json(response.data);
     } catch (error) {
         res.status(500).send('Error fetching data from Marvel API');
@@ -35,7 +35,7 @@ app.get('/hero/:id', async (req, res) => {
     const hash = crypto.createHash('md5').update(ts + privateKey + publicKey).digest('hex');
 
     try {
-        const response = await axios.get(`https://gateway.marvel.com/v1/public/characters/${heroId}?ts=${ts}&apikey=${publicKey}&hash=${hash}`);
+        const response = await axios.get(`http://gateway.marvel.com/v1/public/characters/${heroId}?ts=${ts}&apikey=${publicKey}&hash=${hash}`);
         res.json(response.data);
     } catch (error) {
         res.status(500).send('Error fetching hero data from Marvel API');
@@ -47,7 +47,7 @@ app.get('/comic/:comicId', async (req, res) => {
     const hash = crypto.createHash('md5').update(ts + privateKey + publicKey).digest('hex');
 
     try {
-        const response = await axios.get(`https://gateway.marvel.com/v1/public/comics/${comicId}?ts=${ts}&apikey=${publicKey}&hash=${hash}`);
+        const response = await axios.get(`http://gateway.marvel.com/v1/public/comics/${comicId}?ts=${ts}&apikey=${publicKey}&hash=${hash}`);
         res.json(response.data);
     } catch (error) {
         res.status(500).send('Error fetching data from Marvel API');
@@ -59,7 +59,7 @@ app.get('/serie/:serieId', async (req, res) => {
     const hash = crypto.createHash('md5').update(ts + privateKey + publicKey).digest('hex');
 
     try {
-        const response = await axios.get(`https://gateway.marvel.com/v1/public/series/${serieId}?ts=${ts}&apikey=${publicKey}&hash=${hash}`);
+        const response = await axios.get(`http://gateway.marvel.com/v1/public/series/${serieId}?ts=${ts}&apikey=${publicKey}&hash=${hash}`);
         res.json(response.data);
     } catch (error) {
         res.status(500).send('Error fetching data from Marvel API');
@@ -73,7 +73,7 @@ app.get('/story/:storyId', async (req, res) => {
     const hash = crypto.createHash('md5').update(ts + privateKey + publicKey).digest('hex');
 
     try {
-        const response = await axios.get(`https://gateway.marvel.com/v1/public/stories/${storyId}/series?ts=${ts}&apikey=${publicKey}&hash=${hash}`);
+        const response = await axios.get(`http://gateway.marvel.com/v1/public/stories/${storyId}/series?ts=${ts}&apikey=${publicKey}&hash=${hash}`);
         res.json(response.data);
     } catch (error) {
         res.status(500).send('Error fetching data from Marvel API');
@@ -86,7 +86,7 @@ app.get('/event/:eventId', async (req, res) => {
     const hash = crypto.createHash('md5').update(ts + privateKey + publicKey).digest('hex');
 
     try {
-        const response = await axios.get(`https://gateway.marvel.com/v1/public/events/${eventId}?ts=${ts}&apikey=${publicKey}&hash=${hash}`);
+        const response = await axios.get(`http://gateway.marvel.com/v1/public/events/${eventId}?ts=${ts}&apikey=${publicKey}&hash=${hash}`);
         res.json(response.data);
     } catch (error) {
         res.status(500).send('Error fetching data from Marvel API');
@@ -94,5 +94,5 @@ app.get('/event/:eventId', async (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`Server listening at https://heroarchives.com:${port}`);
+    console.log(`Server listening at https://heroarchives.com`);
 });
