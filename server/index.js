@@ -9,8 +9,18 @@ require('dotenv').config({ path: '../.env' });
 const publicKey = process.env.PUBLIC_KEY;
 const privateKey = process.env.PRIVATE_KEY;
 
+// app.use(cors({
+//     origin: 'https://heroarchives.com'
+// }));
+const allowedOrigins = ['https://heroarchives.com', 'https://www.heroarchives.com'];
 app.use(cors({
-    origin: 'https://heroarchives.com'
+    origin: function(origin, callback){
+        if(!origin || allowedOrigins.indexOf(origin) !== -1){
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    }
 }));
 
 app.get('/', (req, res) => {
