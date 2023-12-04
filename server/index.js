@@ -67,7 +67,6 @@ app.get('/serie/:serieId', async (req, res) => {
         res.json(response.data);
     } catch (error) {
         res.status(500).send('Error fetching data from Marvel API');
-
     }
 });
 app.get('/story/:storyId', async (req, res) => {
