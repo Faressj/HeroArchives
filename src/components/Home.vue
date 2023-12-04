@@ -149,7 +149,7 @@ export default {
       if (!this.searchQuery) return;
       if (universe == "marvel") {
         try {
-          const response = await axios.get('https://heroarchives.com:${port}/search-hero', {
+          const response = await axios.get(`https://heroarchives.com:${port}/search-hero`, {
             params: { name: this.searchQuery }
           });
           this.heroSuggestions = response.data.data.results;
