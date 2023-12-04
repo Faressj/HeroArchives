@@ -3,14 +3,16 @@ const crypto = require('crypto');
 const cors = require('cors');
 const axios = require('axios');
 const app = express();
+// const port = 3001;
 const port = process.env.PORT || 3001;
+
 
 require('dotenv').config({ path: '../.env' });
 const publicKey = process.env.PUBLIC_KEY;
 const privateKey = process.env.PRIVATE_KEY;
 
 app.use(cors({
-    origin: ['https://heroarchives.com', 'https://www.heroarchives.com', 'http://heroarchives.com', 'http://www.heroarchives.com', 'http://localhost:5173']
+    origin: ['https://heroarchives.com','http://localhost:5173']
     // origin: 'https://heroarchives.com'
 }));
 
@@ -23,6 +25,7 @@ app.get('/search-hero', async (req, res) => {
     const hash = crypto.createHash('md5').update(ts + privateKey + publicKey).digest('hex');
     const query = req.query.name;
     try {
+        // Utilisation de nameStartsWith pour une recherche plus souple
         const response = await axios.get(`https://gateway.marvel.com/v1/public/characters?nameStartsWith=${query}&ts=${ts}&apikey=${publicKey}&hash=${hash}&limit=10`); // Ajout d'une limite
         res.json(response.data);
     } catch (error) {
@@ -95,5 +98,5 @@ app.get('/event/:eventId', async (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`Server listening at https://heroarchives.com`);
+    console.log(`Server listening at http://localhost:${port}`);
 });

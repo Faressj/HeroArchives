@@ -242,7 +242,7 @@ export default {
                 let comic = this.hero.comics.items[i];
                 if (comic) {
                     const comicId = comic.resourceURI.split('/').pop();
-                    const response = await axios.get(`https://heroarchives.com/comic/${comicId}`);
+                    const response = await axios.get(`http://localhost:3001/comic/${comicId}`);
                     this.hero.comics.items[i] = {
                         ...comic,
                         details: response.data.data.results[0]
@@ -255,7 +255,7 @@ export default {
                 let serie = this.hero.series.items[i];
                 if (serie) {
                     const serieId = serie.resourceURI.split('/').pop();
-                    const response = await axios.get(`https://heroarchives.com/serie/${serieId}`);
+                    const response = await axios.get(`http://localhost:3001/serie/${serieId}`);
                     this.hero.series.items[i] = {
                         ...serie,
                         details: response.data.data.results[0]
@@ -268,7 +268,7 @@ export default {
                 let story = this.hero.stories.items[i];
                 if (story) {
                     const storyId = story.resourceURI.split('/').pop();
-                    const response = await axios.get(`https://heroarchives.com/story/${storyId}`);
+                    const response = await axios.get(`http://localhost:3001/story/${storyId}`);
                     this.hero.stories.items[i] = {
                         ...story,
                         details: response.data.data.results[0]
@@ -281,7 +281,7 @@ export default {
                 let event = this.hero.events.items[i];
                 if (event) {
                     const eventId = event.resourceURI.split('/').pop();
-                    const response = await axios.get(`https://heroarchives.com/event/${eventId}`);
+                    const response = await axios.get(`http://localhost:3001/event/${eventId}`);
                     this.hero.events.items[i] = {
                         ...event,
                         details: response.data.data.results[0]
@@ -290,18 +290,18 @@ export default {
             }
         },
         async fetchHeroData(id) {
+            console.log("appel api");
+            console.log('Fetching data for hero:', id);
             try {
-                const response = await axios.get(`https://heroarchives.com/hero/${id}`);
+                const response = await axios.get(`http://localhost:3001/hero/${id}`);
                 this.hero = response.data.data.results[0];
-
                 this.loadInitialData();
-
                 this.loadAdditionalData();
-
             } catch (error) {
                 console.error(error);
             }
         },
+
     }
 }
 
