@@ -3,14 +3,14 @@ const crypto = require('crypto');
 const cors = require('cors');
 const axios = require('axios');
 const app = express();
-const port = 3001;
+const port = process.env.PORT || 3001;
 
 require('dotenv').config({ path: '../.env' });
 const publicKey = process.env.PUBLIC_KEY;
 const privateKey = process.env.PRIVATE_KEY;
 
 app.use(cors({
-    origin: ['https://heroarchives.com', 'https://www.heroarchives.com']
+    origin: ['https://heroarchives.com:${port}', 'https://www.heroarchives.com:${port}', 'http://heroarchives.com:${port}', 'http://www.heroarchives.com:${port}', 'http://localhost:5173']
     // origin: 'https://heroarchives.com'
 }));
 
