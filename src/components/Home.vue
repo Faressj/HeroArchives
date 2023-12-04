@@ -149,7 +149,7 @@ export default {
       if (!this.searchQuery) return;
       if (universe == "marvel") {
         try {
-          const response = await axios.get('http://localhost:3001/search-hero', {
+          const response = await axios.get('https://heroarchives.com/search-hero', {
             params: { name: this.searchQuery }
           });
           this.heroSuggestions = response.data.data.results; // Assurez-vous que ce chemin correspond à la structure de données de l'API Marvel
