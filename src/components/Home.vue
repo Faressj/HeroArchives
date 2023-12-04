@@ -151,7 +151,7 @@ export default {
         const port = process.env.PORT || 3001;
         console.log(port);
         try {
-          const response = await axios.get(`https://heroarchives.com:${port}/search-hero`, {
+          const response = await axios.get(`https://heroarchives.com/search-hero`, {
             params: { name: this.searchQuery }
           });
           this.heroSuggestions = response.data.data.results; // Assurez-vous que ce chemin correspond à la structure de données de l'API Marvel
