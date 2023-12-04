@@ -149,7 +149,7 @@ export default {
       if (!this.searchQuery) return;
       if (universe == "marvel") {
         const port = process.env.PORT || 3001;
-
+        console.log(port);
         try {
           const response = await axios.get(`https://heroarchives.com:${port}/search-hero`, {
             params: { name: this.searchQuery }
