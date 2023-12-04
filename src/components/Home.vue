@@ -148,6 +148,8 @@ export default {
     searchHeroes: _.debounce(async function (universe) {
       if (!this.searchQuery) return;
       if (universe == "marvel") {
+        const port = process.env.PORT || 3001;
+
         try {
           const response = await axios.get(`http://heroarchives.com${port}/search-hero`, {
             params: { name: this.searchQuery }
@@ -311,6 +313,7 @@ export default {
         height: fit-content;
         font-size: 32px;
         width: 100%;
+
         ul {
           list-style: none;
 
