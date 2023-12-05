@@ -104,7 +104,7 @@ export default {
         if (image === 'left') {
           if (leftImageEl && leftContentEl) {
             leftImageEl.style.display = 'block';
-            leftContentEl.style.display = 'grid';
+            leftContentEl.style.display = 'block';
             leftImageEl.classList.add("img-fullscreen");
             leftContentEl.classList.add("fade-in");
             setTimeout(() => leftContentEl.classList.add("show"), 10);
