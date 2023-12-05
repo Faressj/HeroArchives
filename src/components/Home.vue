@@ -112,7 +112,7 @@ export default {
         } else if (image === 'right') {
           if (rightImageEl && rightContentEl) {
             rightImageEl.style.display = 'block';
-            rightContentEl.style.display = 'grid';
+            rightContentEl.style.display = 'block';
             rightImageEl.classList.add("img-fullscreen");
             rightContentEl.classList.add("fade-in");
             setTimeout(() => rightContentEl.classList.add("show"), 10);
