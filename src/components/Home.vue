@@ -256,7 +256,7 @@ export default {
         position: relative;
         display: inherit;
         z-index: 1;
-        width: 600px;
+        width: 100%;
         height: 100px;
         font-size: 1.5em;
         background: linear-gradient(21deg, #10abff, #1beabd);
@@ -343,9 +343,9 @@ export default {
       font-size: 32px;
       text-align: center;
       background-color: rgb(0, 0, 0, 0.2);
-      border-radius: 15%;
+      border-radius: 50px;
       color: white;
-      width: 25%;
+      width: 50%;
       padding: 50px;
       margin: 40px auto;
     }
